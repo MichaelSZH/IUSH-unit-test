@@ -15,4 +15,36 @@ describe('RN-07 esPlacaValida', () => {
     // Assert: verificar el resultado contra la especificación
     expect(resultado).toBe(true);
   });
+
+  it('esPlacaValida_conGuionOpcional_debeRetornarTrue', () => {
+    expect(esPlacaValida('ABC-123')).toBe(true);
+  });
+
+  it('esPlacaValida_conMinusculas_debeRetornarTrue', () => {
+    expect(esPlacaValida('abc123')).toBe(true);
+  });
+
+  it('esPlacaValida_conEspaciosExternos_debeRetornarTrue', () => {
+    expect(esPlacaValida('  ABC-123  ')).toBe(true);
+  });
+
+  it('esPlacaValida_conMenosDeTresLetras_debeRetornarFalse', () => {
+    expect(esPlacaValida('AB123')).toBe(false);
+  });
+
+  it('esPlacaValida_conMasDeTresLetras_debeRetornarFalse', () => {
+    expect(esPlacaValida('ABCD123')).toBe(false);
+  });
+
+  it('esPlacaValida_conMenosDeTresDigitos_debeRetornarFalse', () => {
+    expect(esPlacaValida('ABC12')).toBe(false);
+  });
+
+  it('esPlacaValida_conMasDeTresDigitos_debeRetornarFalse', () => {
+    expect(esPlacaValida('ABC1234')).toBe(false);
+  });
+
+  it('esPlacaValida_conGuionEnPosicionIncorrecta_debeRetornarFalse', () => {
+    expect(esPlacaValida('AB-C123')).toBe(false);
+  });
 });
